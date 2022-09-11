@@ -1,0 +1,87 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/layout/styles/layoutlog.css" />
+<link rel="stylesheet" href="/layout/styles/indexLayout.css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+
+
+<body>
+
+<!-- topbar -->
+<div>
+    <div>
+          <div class="justify-content-between fixed-top d-flex">
+          <div style="width: 10000px; height: 60px; background-color: #212529; filter: drop-shadow(0px 17px 11px grey);"><h2 style="margin-left: 120px; margin-top: 10px; color: white"><b>UCP Centro di Formazione UdSdR</b></h2></div>
+          <div style="position: absolute;"><a th:href="@{/index}" style="text-decoration: none; color:white; margin-top: 20px;" ><img src="/images/logo.png" width="100px" height="100px" style="margin-top: 2px; margin-left: 5px;filter: drop-shadow(6px 3px 5px black);"></a></div>
+          </div>
+    </div>
+</div>
+<!-- fine topbar -->
+
+<div class="d-md-flex half">
+	<div class="contents">
+		<div class="container">
+			<div class="row align-items-center justify-content-center">
+				<div class="col-md-12">
+					<div class="form-block mx-auto">
+						<div class="text-center mb-5">
+							<h3>STAI MODIFICANDO LA CERTIFICAZIONE</h3>
+							<h3>"[[${certificazione.nome}]]"</h3>
+						</div>
+						<form th:action="@{'/admin/editcertification/' + ${certificazione.id}}" method="POST">
+							<div class="form-group first">
+							<div style="text-align: center"><label for="nome">NOME</label></div>
+							<div class="form-group first d-flex justify-content-between">
+								<input disabled type="text" style="font-weight: bold;" class="form-control text-center" placeholder="vecchio nome" th:field="${certificazione.nome}">
+								<div style="text-align: center; margin-top: 10px"><img src="/images/forward.png" alt="home" style="width: 35px; height: 35px; text-align: left"></div>
+								<input type="text" class="form-control text-center" placeholder="nuovo nome" th:field="${certificazioneNuova.nome}">
+							</div>
+								<h6 th:if="${#fields.hasErrors('certificazioneNuova.nome')}" th:errors="${certificazione.nome}" th:style="'color:#b90000'"></h6>
+							</div>
+							<div class="form-group first">
+							<div style="text-align: center"><label for="data">DATA</label></div>
+							<div class="form-group first d-flex justify-content-between">
+								<input disabled type="text" style="font-weight: bold;" class="form-control text-center" placeholder="vecchia data" id="vecchio data" th:field="${certificazione.data}">
+								<div style="text-align: center; margin-top: 10px"><img src="/images/forward.png" alt="home" style="width: 35px; height: 35px; text-align: left"></div>
+								<input type="text" class="form-control text-center" placeholder="yyyy-mm-gg" id="nuova data" th:field="${certificazioneNuova.data}">
+							</div>
+								<h6 th:if="${#fields.hasErrors('certificazioneNuova.data')}" th:errors="${certificazione.data}" th:style="'color:#b90000'"></h6>
+							</div>						
+							<div class="form-group first">
+							<div style="text-align: center"><label for="luogo">LUOGO</label></div>
+							<div class="form-group first d-flex justify-content-between">
+								<input disabled type="text" style="font-weight: bold;" class="form-control text-center" placeholder="vecchio nome" id="vecchio nome" th:field="${certificazione.luogo}">
+								<div style="text-align: center; margin-top: 10px"><img src="/images/forward.png" alt="home" style="width: 35px; height: 35px; text-align: left"></div>
+								<input type="text" class="form-control text-center" placeholder="nuovo nome" id="nuovo nome" th:field="${certificazioneNuova.luogo}">
+							</div>
+								<h6 th:if="${#fields.hasErrors('certificazioneNuova.luogo')}" th:errors="${certificazione.luogo}" th:style="'color:#b90000'"></h6>
+							</div>
+							<div class="form-group first">
+							<div style="text-align: center"><label for="descrizione">DESCRIZIONE</label></div>
+							<div class="form-group first d-flex justify-content-between">
+								<textarea disabled class="form-control text-center" style="font-weight: bold;" placeholder="vecchia descrizione" id="vecchia descrizione" th:field="${certificazione.descrizione}"></textarea>
+								<div style="text-align: center; margin-top: 10px"><img src="/images/forward.png" alt="home" style="width: 35px; height: 35px; text-align: left"></div>
+								<textarea class="form-control text-center" placeholder="nuova descrizione" id="nuova descrizione" th:field="${certificazioneNuova.descrizione}"></textarea>
+							</div>
+								<h6 th:if="${#fields.hasErrors('certificazioneNuova.descrizione')}" th:errors="${certificazione.descrizione}" th:style="'color:#b90000'"></h6>
+							</div>
+							<span class="text-center my-5 d-block"></span>
+							<input type="submit" value="Conferma modifiche" class="btn btn-block py-2 btn-primary">
+							<span class="text-center my-1 d-block">oppure</span>
+							<span class="text-center my-1 d-block">
+									<a th:href="@{/admin/managecertifications}">Annulla modifiche</a>
+							</span>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
