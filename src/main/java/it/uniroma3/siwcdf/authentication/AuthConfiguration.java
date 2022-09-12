@@ -43,10 +43,10 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 	                // chiunque puo visualizzare file js css e immagini in ogni folder
 	                .antMatchers("/**/*.js", "/**/*.css", "/**/*.png", "/**/*.jpg").permitAll()
 	                // permessi di debug
-	                .antMatchers(HttpMethod.GET, "/index").hasAnyAuthority(ADMIN_ROLE, DEFAULT_ROLE)
+	                .antMatchers(HttpMethod.GET, "/index").hasAnyAuthority(ADMIN_ROLE, DEFAULT_ROLE, NOTAPPROVED_ROLE)
 	                //.antMatchers("/", "/index", "/admin/managestudents").permitAll()
 	                // gli utenti registrati, loggati, ma non approvati, non possono visualizzare nulla fuorche la pagina informativa
-	                //.antMatchers("/needsapproval").hasAnyAuthority(NOTAPPROVED_ROLE)
+	                //.antMatchers("/index").hasAnyAuthority(NOTAPPROVED_ROLE)
 	                // solo gli utenti autenticati con ruolo ADMIN possono accedere a risorse con path /admin/**
 	                .antMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
 	                .antMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(ADMIN_ROLE)

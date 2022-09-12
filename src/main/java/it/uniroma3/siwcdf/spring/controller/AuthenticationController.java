@@ -63,9 +63,7 @@ public class AuthenticationController {
 	}
 	
 	@GetMapping("/login-error") 
-    public String asdasddasd(HttpServletRequest request, Model model) {
-		
-		System.out.println("sono dentro @@@#####");
+    public String loginError(HttpServletRequest request, Model model) {
 		
         HttpSession session = request.getSession(false);
         String errorMessage = null;

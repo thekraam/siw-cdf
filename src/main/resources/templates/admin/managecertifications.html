@@ -54,7 +54,7 @@
 									<td>[[${certificazione.data}]]</td>
 									<td>[[${certificazione.luogo}]]</td>
 									<td>[[${certificazione.descrizione}]]</td>
-									<td><a class="mr-5" th:href="@{'/admin/managecertifications/edit/' + ${certificazione.id}}">Modifica</a><a th:href="@{'/admin/managecertifications/delete/' + ${certificazione.id}}">Elimina</a></td>
+									<td><div style="text-align: center"><a th:href="@{'/admin/managecertifications/edit/' + ${certificazione.id}}">Modifica</a><a class="ml-5" th:href="@{'/admin/managecertifications/delete/' + ${certificazione.id}}">Elimina</a><a class="ml-5" th:href="@{'/admin/managecertifications/students/' + ${certificazione.id}}">Mostra prenotati</a></div></td>
 								</tr>
 						</table>
 						<br>

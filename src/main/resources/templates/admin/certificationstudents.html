@@ -31,12 +31,11 @@
 					<div class="form-block mx-auto" style="max-width: 1500px">
 						<div class="text-center mb-3">
 						<div style="text-align: left"><a href="/index"><img src="/images/home.png" alt="home" style="width: 20px; height: 20px; text-align: left"></a></div>
-							<h3>GESTISCI ALLIEVI</h3>
+						<h3>PRENOTAZIONI ALLA CERTIFICAZIONE "[[${certificazione.nome}]]"</h3>
 						</div>
 						<table class="table table-bordered">
 							<thead class="thead-dark">
 							<tr>
-								<th>Database ID</th>
 								<th>Username</th>
 								<th>Nome</th>
 								<th>Cognome</th>
@@ -44,18 +43,18 @@
 							</tr>
 							</thead>
 							<tbody>
-							<th:block th:each="allievo : ${allievi}">
+							<th:block th:each="allievo : ${allieviPrenotati}">
 								<tr>
-									<td>[[${allievo.id}]]</td>
 									<td>[[${allievo.username}]]</td>
 									<td>[[${allievo.nome}]]</td>
 									<td>[[${allievo.cognome}]]</td>
-									<td style="text-align: center"><a th:if="${allievo.role}=='DEFAULT'" class="mr-5" th:href="@{'/admin/managestudents/certifications/' + ${allievo.id}}">Dettagli Certificazioni</a><a th:href="@{'/admin/managestudents/edit/' + ${allievo.id}}">Modifica</a>
-									<br><span th:if="${allievo.role}=='NOTAPPROVED'"><a th:href="@{'/admin/managestudents/approve/' + ${allievo.id}}">Approva Registrazione</a></span></td>
+									<td><div style="text-align: center"><a th:href="@{'/admin/managestudents/'}">Visualizza Dettagli Utente</a></div></td>
 								</tr>
 						</table>
 						<span class="text-center my-5 d-block"></span>
-						<a th:href="@{/admin/new}" style="text-decoration:none"><span class="btn btn-block py-2 btn-primary">Aggiungi un amministratore</span></a>
+						<span class="text-center my-1 d-block" style="font-size: 120%">
+								<a th:href="@{/admin/managecertifications}">Ritorna alla gestione certificazioni</a>
+						</span>
 					</div>
 				</div>
 			</div>

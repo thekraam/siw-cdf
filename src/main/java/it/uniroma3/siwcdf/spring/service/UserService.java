@@ -5,6 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import it.uniroma3.siwcdf.spring.model.Certificazione;
 import it.uniroma3.siwcdf.spring.model.User;
 import it.uniroma3.siwcdf.spring.repository.UserRepository;
 
@@ -61,6 +62,16 @@ public class UserService {
     public List<User> userPerNomeAndCognome(String nome, String cognome) {
         return userRepository.findByNomeAndCognome(nome, cognome);
     }
+    
+	@Transactional
+	public List<User> getAllieviCertificazione(Certificazione certificazione){
+		List<Certificazione> certificazioneList = new ArrayList<>();
+		certificazioneList.add(certificazione);
+		List<List<User>> allieviEcertificazioni = userRepository.findByCertificazioniIn(certificazioneList);
+		
+		if(allieviEcertificazioni.isEmpty()) return null;
+		return allieviEcertificazioni.get(0);
+	}
 
     @Transactional
     public User userPerId(Long id) {

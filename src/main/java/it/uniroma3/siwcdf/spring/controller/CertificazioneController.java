@@ -66,6 +66,7 @@ public class CertificazioneController {
 		Certificazione certificazione = certificazioneService.getById(id);
 		
 		model.addAttribute("certificazione", certificazione);
+		model.addAttribute("role", credentialsService.getRoleAuthenticated());
 		
 		return "certificationdetails";
 	}
@@ -125,6 +126,7 @@ public class CertificazioneController {
 		
 		model.addAttribute("certificazioniDisp", certificazioniAllievo);
 		model.addAttribute("allievo", userService.getUser(id));
+		model.addAttribute("role", credentialsService.getRoleAuthenticated());
 		
 		return "admin/studentcertifications";
 	}
@@ -133,6 +135,18 @@ public class CertificazioneController {
 	public String addCertificazione(Model model) {
 		model.addAttribute("certificazione", new Certificazione());
 		return "admin/addcertification";
+	}
+	
+	@RequestMapping(value = {"/admin/managecertifications/students/{id}"}, method = RequestMethod.GET)
+	public String showPrenotati(@PathVariable("id") Long id, Model model) {
+		
+		Certificazione certificazione = certificazioneService.getById(id);
+		
+		model.addAttribute("certificazione", certificazione);
+		model.addAttribute("allieviPrenotati", userService.getAllieviCertificazione(certificazione));
+		model.addAttribute("role", credentialsService.getRoleAuthenticated());
+		
+		return "admin/certificationstudents";
 	}
 	
 	@RequestMapping(value = {"/admin/addcertification"}, method = RequestMethod.POST)

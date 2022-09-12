@@ -61,6 +61,7 @@ public class CertificazioneService {
 		return certificazioneRepository.save(certificazione);
 	}
 	
+	
 	@Transactional
 	public List<Certificazione> getCertificazioniDisponibiliPerAllievo(){
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();

@@ -47,8 +47,8 @@
 								<tr>
 									<td>[[${certificazione.nome}]]</td>
 									<td>[[${certificazione.data}]]</td>
-									<td>[[${certificazione.dataScadenza}]]</td>
-									<td><div style="text-align: center"><a class="mr-5" th:href="@{'/admin/certifications/unenrol/' + ${certificazione.id}}">Forza rimozione prenotazione</a><a th:href="@{'/certifications/details/' + ${certificazione.id}}">Visualizza Dettagli</a></div></td>
+									<td>[[${certificazione.dataScadenzaPrenotazione}]]</td>
+									<td><div style="text-align: center"><a th:href="@{'/certifications/details/' + ${certificazione.id}}">Visualizza Dettagli</a></div></td>
 								</tr>
 						</table>
 						<span class="text-center my-5 d-block"></span>

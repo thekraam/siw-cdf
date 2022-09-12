@@ -29,10 +29,10 @@
 			<div class="row align-items-center justify-content-center">
 				<div class="col-md-12">
 					<div class="form-block mx-auto" style="max-width: 1500px">
-						<div>
 						<div style="text-align: left">
 						<a href="/index"><img src="/images/home.png" alt="home" style="width: 20px; height: 20px; text-align: left"></a>
-						</div>				
+						</div>	
+						<div style="text-align: center">			
 						<h3>CERTIFICAZIONE "[[${certificazione.nome}]]"</h3>
 						</div>
 						<table class="table table-bordered">
@@ -50,6 +50,12 @@
 									<td>[[${certificazione.dataScadenzaPrenotazione}]]</td>
 								</tr>
 						</table>
+						<div th:if="${role}!='ADMIN'">
+						<span class="text-center my-5 d-block"></span>
+						<span class="text-center my-1 d-block" style="font-size: 120%">
+								<a th:href="@{/reserved}">Ritorna alle certificazioni prenotate</a>
+						</span>
+						</div>
 					</div>
 				</div>
 			</div>

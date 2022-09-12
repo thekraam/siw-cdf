@@ -37,6 +37,9 @@ public class MainController {
 	
 	@RequestMapping(value = {"/", "index"}, method = RequestMethod.GET)
 	public String index(Model model) {
+		
+		System.out.println("asdasdads");
+		
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if(userDetails.getUsername() != null) {
 			model.addAttribute("role", credentialsService.getRoleAuthenticated());
