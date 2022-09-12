@@ -50,5 +50,11 @@ Il sistema prevede i seguenti casi d'uso:
 3. La segreteria sceglie l'attività 'Gestisci Utenti'. Il sistema mostra la lista di Allievi e Amministratori attualmente registrati.
 4. La segreteria sceglie l'attività 'Aggiungi Amministratore'. Il sistema mostra un form da compilare.
 5. La segreteria inserisce i dati del nuovo amministratore, compresa la password. Il sistema registra le informazioni creando un nuovo amministratore e mostra i dati inseriti, compresa la password.
+#### UC8
+##### Consultazione prenotati ad una specifica certificazione - Attore primario: Amministratore/Segreteria
+1. La segreteria vuole consultare quali siano i prenotati ad una certificazione.
+2. La segreteria si autentica mediante username e password. Il sitema convalida i dati immessi. Il sistema mostra la pagina index.
+3. La segreteria sceglie l'attività 'Gestisci Certificazioni'. Il sistema mostra la lista di Certificazioni.
+4. La segreteria sceglie l'attività 'Mostra prenotati' per la certificazione di interesse. Il sistema mostra la lista di allievi che hanno prenotato per quella certificazione.
 #### UCX
 ##### Visualizzazione contenuti digitali, 'Login' e 'Registrazione' sono casi d'uso immediati.
