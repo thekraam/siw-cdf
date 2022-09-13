@@ -57,4 +57,4 @@ Il sistema prevede i seguenti casi d'uso:
 3. La segreteria sceglie l'attività 'Gestisci Certificazioni'. Il sistema mostra la lista di Certificazioni.
 4. La segreteria sceglie l'attività 'Mostra prenotati' per la certificazione di interesse. Il sistema mostra la lista di allievi che hanno prenotato per quella certificazione.
 #### UCX
-##### Visualizzazione contenuti digitali, 'Login' e 'Registrazione' sono casi d'uso immediati.
+##### Visualizzazione contenuti multimediali, fase di 'Login' e 'Registrazione' sono casi d'uso immediati.
