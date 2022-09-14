@@ -38,16 +38,19 @@ public class CredentialsService {
 		Credentials result = this.credentialsRepository.findByUsername(username);
 		return result;
 	}
+	
+	@Transactional
+	public List<Credentials> getAll(){
+		return (List<Credentials>) this.credentialsRepository.findAll();
+	}
 		
     @Transactional
     public Credentials saveCredentials(Credentials credentials, String Role) {
     	if(!credentialsRepository.existsBy()) {
     		credentials.setRole(ADMIN_ROLE);
-    		credentials.getUser().setRole(ADMIN_ROLE);
     	}
     	else {
     		credentials.setRole(Role);
-    		credentials.getUser().setRole(Role);
     	}
         // se sto approvando un utente gia esistente non criptare la password...
         if(this.getCredentialsByUsername(credentials.getUsername())!=null)

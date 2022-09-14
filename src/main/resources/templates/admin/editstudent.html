@@ -31,25 +31,24 @@
 					<div class="form-block mx-auto">
 						<div class="text-center mb-5">
 						<div style="text-align: left"><a href="/index"><img src="/images/home.png" alt="home" style="width: 20px; height: 20px; text-align: left"></a></div>
-						<br>	<h3>STAI MODIFICANDO I DATI DI [[${allievo.username}]]</h3>
+						<br>	<h3>STAI MODIFICANDO I DATI DI [[${credentials.username}]]</h3>
 						</div>
-						<form th:action="@{'/admin/managestudents/edit/' + ${allievo.id}}" method="POST">
+						<form th:action="@{'/admin/managestudents/edit/' + ${credentials.user.id}}" method="POST">
 							<div class="form-group first">
 								<label for="nome">NOME</label>
-								<input type="text" class="form-control" placeholder="nuovo nome" id="firstname" required th:field="${allievo.nome}">
-								<h6 th:if="${#fields.hasErrors('allievo.nome')}" th:errors="${user.nome}" th:style="'color:#b90000'"></h6>
+								<input type="text" class="form-control" placeholder="nuovo nome" id="firstname" required th:field="${credentials.user.nome}">
+								<h6 th:if="${#fields.hasErrors('credentials.user.nome')}" th:errors="${user.nome}" th:style="'color:#b90000'"></h6>
 							</div>						
 							<div class="form-group first">
 								<label for="cognome">COGNOME</label>
-								<input type="text" class="form-control" placeholder="nuovo cognome" id="lastname" required th:field="${allievo.cognome}">
-								<h6 th:if="${#fields.hasErrors('allievo.cognome')}" th:errors="${user.cognome}" th:style="'color:#b90000'"></h6>
+								<input type="text" class="form-control" placeholder="nuovo cognome" id="lastname" required th:field="${credentials.user.cognome}">
+								<h6 th:if="${#fields.hasErrors('credentials.user.cognome')}" th:errors="${user.cognome}" th:style="'color:#b90000'"></h6>
 							</div>						
 							<div class="form-group first">
 								<label for="username">USERNAME</label>
-								<input type="text" class="form-control" placeholder="nuovo username" id="username" required th:field="${allievo.username}">
-								<h6 th:if="${#fields.hasErrors('allievo.username')}" th:errors="${credentials.username}" th:style="'color:#b90000'"></h6>
+								<input type="text" class="form-control" placeholder="nuovo username" id="username" required th:field="${credentials.username}">
+								<h6 th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}" th:style="'color:#b90000'"></h6>
 							</div>
-							<span style="display: none" th:text="${allievo}"></span>
 							<span class="text-center my-5 d-block"></span>
 							<input type="submit" value="Conferma modifiche" class="btn btn-block py-2 btn-primary">
 							<span class="text-center my-1 d-block" style="font-size: 80%">oppure</span>

@@ -16,7 +16,16 @@
 		<div class="container">
 			<div class="row align-items-center justify-content-center">
 				<div class="col-md-12">
-					<div class="form-block mx-auto">
+					<div class="form-block mx-auto" th:if="${editadmin}">
+						<div class="text-center mb-5">
+							<h3>NON E' POSSIBILE MODIFICARE L'AMMINISTRATORE PRINCIPALE</h3>
+						</div>	
+							<span class="text-center my-5 d-block"></span>
+							<span class="text-center my-1 d-block" style="font-size: 120%">
+									<a th:href="@{/index}">Ritorna alla home</a>
+							</span>
+					</div>
+					<div class="form-block mx-auto" th:unless="${editadmin}">
 						<div class="text-center mb-5">
 							<h3>RISORSA NON DISPONIBILE</h3>
 						</div>	

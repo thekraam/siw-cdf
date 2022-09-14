@@ -35,12 +35,6 @@ public @Data class User{
 	@Column(nullable=true)
 	private Date dataDiNascita;
 	
-	@Column(nullable=false, unique=true)
-	private String username;
-	
-	@Column(nullable=false)
-	private String role;
-	
 	@ManyToMany(mappedBy="allievi",cascade= {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}) 
 	private List<Certificazione> certificazioni = new ArrayList<>();
 	

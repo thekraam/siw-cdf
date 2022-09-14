@@ -43,11 +43,11 @@
 							</tr>
 							</thead>
 							<tbody>
-							<th:block th:each="allievo : ${allieviPrenotati}">
+							<th:block th:each="credenziali : ${credenzialiListaPrenotati}">
 								<tr>
-									<td>[[${allievo.username}]]</td>
-									<td>[[${allievo.nome}]]</td>
-									<td>[[${allievo.cognome}]]</td>
+									<td>[[${credenziali.username}]]</td>
+									<td>[[${credenziali.user.nome}]]</td>
+									<td>[[${credenziali.user.cognome}]]</td>
 									<td><div style="text-align: center"><a th:href="@{'/admin/managestudents/'}">Visualizza Dettagli Utente</a></div></td>
 								</tr>
 						</table>

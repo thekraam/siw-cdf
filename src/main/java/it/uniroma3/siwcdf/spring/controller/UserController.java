@@ -35,18 +35,20 @@ public class UserController {
     
     @RequestMapping(value = "/admin/managestudents", method = RequestMethod.GET)
     public String showAllievi(Model model) {
-    	model.addAttribute("allievi", this.userService.getAllUsers());
+    	model.addAttribute("credenzialiLista", credentialsService.getAll());
     	return "admin/managestudents";
     }
 
     @RequestMapping(value = "/admin/managestudents/edit/{id}", method = RequestMethod.GET)
     public String editAllievo(@PathVariable("id") Long id, Model model) {
-    	User allievoCorrente=this.userService.getUser(id);
+    	Credentials credenzialiUser =credentialsService.getCredentials(id);
     	
-    	if(allievoCorrente.getId()==1) return "TESTerror";
+    	if(credenzialiUser.getId()==1) {
+    		model.addAttribute("editadmin", true);
+    		return "TESTerror";
+    	}
     	
-    	model.addAttribute("allievo", allievoCorrente);
-    	model.addAttribute("credentials", credentialsService.getCredentialsByUsername(allievoCorrente.getUsername()));
+    	model.addAttribute("credentials", credenzialiUser);
     	
     	//System.out.println(allievoCorrente.getDataDiNascita().toLocaleString());
     	return "admin/editstudent";
@@ -59,7 +61,6 @@ public class UserController {
     	// forzo i dati mancanti per far passare il check
     	allievo.setCertificazioni(allievoSalvato.getCertificazioni());
     	allievo.setDataDiNascita(allievoSalvato.getDataDiNascita());
-    	allievo.setRole(allievoSalvato.getRole());
     	
     	this.userValidator.validate(allievo, userBindingResult);
     	
@@ -73,7 +74,6 @@ public class UserController {
     		User allievoDaSalvare = userService.getUser(credentials.getId());
     		allievoDaSalvare.setNome(allievo.getNome());
     		allievoDaSalvare.setCognome(allievo.getCognome());
-    		allievoDaSalvare.setUsername(allievo.getUsername());
     		
     		Credentials credenziali = credentialsService.getCredentials(credentials.getId());
     		credentialsService.saveCredentials(credenziali, credenziali.getRole());

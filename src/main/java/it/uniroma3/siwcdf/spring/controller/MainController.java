@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.uniroma3.siwcdf.spring.model.Credentials;
 import it.uniroma3.siwcdf.spring.service.CredentialsService;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,12 +39,11 @@ public class MainController {
 	@RequestMapping(value = {"/", "index"}, method = RequestMethod.GET)
 	public String index(Model model) {
 		
-		System.out.println("asdasdads");
-		
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if(userDetails.getUsername() != null) {
-			model.addAttribute("role", credentialsService.getRoleAuthenticated());
-			model.addAttribute("user", credentialsService.getCredentialsByUsername(userDetails.getUsername()).getUser());
+			Credentials credenzialiCorrenti = credentialsService.getCredentialsByUsername(userDetails.getUsername());
+			model.addAttribute("role", credenzialiCorrenti.getRole());
+			model.addAttribute("user", credenzialiCorrenti.getUser());
 		}
 		return "index";
 	}

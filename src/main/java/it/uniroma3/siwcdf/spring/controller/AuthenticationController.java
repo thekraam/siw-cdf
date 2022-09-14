@@ -115,6 +115,7 @@ public class AuthenticationController {
             //se il primo utente e un admin, allora nessuna approvazione richiesta
             if(credenzialiUtente.getId()>1) {
             	model.addAttribute("allievo", credentials.getUser());
+            	model.addAttribute("credentials", credenzialiUtente);
             	return "needsapproval";
             }
             return "login";
@@ -128,7 +129,7 @@ public class AuthenticationController {
     
     @RequestMapping(value="/admin/managestudents/approve/{id}",method= RequestMethod.GET)
     public String approveUser(@PathVariable("id")Long id, Model model) {
-    	Credentials currentCredentials = this.credentialsService.getCredentialsByUsername(userService.getUser(id).getUsername());
+    	Credentials currentCredentials = this.credentialsService.getCredentials(id);
     	credentialsService.saveCredentials(currentCredentials, Credentials.DEFAULT_ROLE);
         return "admin/approvalsuccessful";
     }

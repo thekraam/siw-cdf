@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import it.uniroma3.siwcdf.spring.controller.validator.CertificazioneValidator;
 import it.uniroma3.siwcdf.spring.model.Certificazione;
+import it.uniroma3.siwcdf.spring.model.Credentials;
 import it.uniroma3.siwcdf.spring.model.User;
 import it.uniroma3.siwcdf.spring.repository.CertificazioneRepository;
 import it.uniroma3.siwcdf.spring.service.CertificazioneService;
@@ -122,10 +123,14 @@ public class CertificazioneController {
 	
 	@RequestMapping(value = {"/admin/managestudents/certifications/{id}"}, method = RequestMethod.GET)
 	public String showCertificazioniAllievo(@PathVariable("id") Long id, Model model) {
-		List<Certificazione> certificazioniAllievo = userService.getUser(id).getCertificazioni();
+		
+		Credentials credenzialiUser = credentialsService.getCredentials(id);
+		
+		
+		List<Certificazione> certificazioniAllievo = credenzialiUser.getUser().getCertificazioni();
 		
 		model.addAttribute("certificazioniDisp", certificazioniAllievo);
-		model.addAttribute("allievo", userService.getUser(id));
+		model.addAttribute("credentials", credenzialiUser);
 		model.addAttribute("role", credentialsService.getRoleAuthenticated());
 		
 		return "admin/studentcertifications";
@@ -141,9 +146,15 @@ public class CertificazioneController {
 	public String showPrenotati(@PathVariable("id") Long id, Model model) {
 		
 		Certificazione certificazione = certificazioneService.getById(id);
+		List<User> allieviCertificazione = userService.getAllieviCertificazione(certificazione);
+		
+		List<Credentials> credenzialiAllieviCertificazioni = new ArrayList<>();
+		for(User a : allieviCertificazione) {
+			credenzialiAllieviCertificazioni.add(credentialsService.getCredentials(a.getId()));
+		}
 		
 		model.addAttribute("certificazione", certificazione);
-		model.addAttribute("allieviPrenotati", userService.getAllieviCertificazione(certificazione));
+		model.addAttribute("credenzialiListaPrenotati", credenzialiAllieviCertificazioni);
 		model.addAttribute("role", credentialsService.getRoleAuthenticated());
 		
 		return "admin/certificationstudents";
