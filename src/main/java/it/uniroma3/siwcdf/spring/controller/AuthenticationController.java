@@ -118,7 +118,7 @@ public class AuthenticationController {
             	model.addAttribute("credentials", credenzialiUtente);
             	return "needsapproval";
             }
-            return "login";
+            return "redirect:/login";
         }
         // altrimenti stampa gli errori in console...
         //if(userBindingResult.hasErrors()) {
