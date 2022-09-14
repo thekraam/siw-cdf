@@ -149,7 +149,7 @@ public class CertificazioneController {
 		List<User> allieviCertificazione = userService.getAllieviCertificazione(certificazione);
 		
 		List<Credentials> credenzialiAllieviCertificazione = new ArrayList<>();
-		if(!allieviCertificazione.isEmpty()) {
+		if(allieviCertificazione!=null) {
 			for(User a : allieviCertificazione) {
 				credenzialiAllieviCertificazione.add(credentialsService.getCredentials(a.getId()));
 			}

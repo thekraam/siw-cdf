@@ -96,10 +96,10 @@ public class CertificazioneService {
 	public List<Certificazione> getCertificazioniAllievo(User allievo){
 		List<User> allievi = new ArrayList<>();
 		allievi.add(allievo);
-		List<List<Certificazione>> certificazioniEallievi = certificazioneRepository.findByAllieviIn(allievi);
+		List<Certificazione> certificazioniEallievi = certificazioneRepository.findAllByAllieviIn(allievi);
 		
 		if(certificazioniEallievi.isEmpty()) return null;
-		return certificazioniEallievi.get(0);
+		return certificazioniEallievi;
 	}
 	
 	// getter utente individuale

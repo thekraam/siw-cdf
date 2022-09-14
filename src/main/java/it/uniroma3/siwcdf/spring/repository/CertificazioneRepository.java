@@ -12,5 +12,5 @@ public interface CertificazioneRepository extends CrudRepository<Certificazione,
 	
 	public Optional<Certificazione> findById(Long id);
 
-	public List<List<Certificazione>> findByAllieviIn(List<User> allievi);
+	public List<Certificazione> findAllByAllieviIn(List<User> allievi);
 }
