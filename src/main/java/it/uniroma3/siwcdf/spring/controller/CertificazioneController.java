@@ -148,13 +148,15 @@ public class CertificazioneController {
 		Certificazione certificazione = certificazioneService.getById(id);
 		List<User> allieviCertificazione = userService.getAllieviCertificazione(certificazione);
 		
-		List<Credentials> credenzialiAllieviCertificazioni = new ArrayList<>();
-		for(User a : allieviCertificazione) {
-			credenzialiAllieviCertificazioni.add(credentialsService.getCredentials(a.getId()));
+		List<Credentials> credenzialiAllieviCertificazione = new ArrayList<>();
+		if(!allieviCertificazione.isEmpty()) {
+			for(User a : allieviCertificazione) {
+				credenzialiAllieviCertificazione.add(credentialsService.getCredentials(a.getId()));
+			}
 		}
-		
+			
 		model.addAttribute("certificazione", certificazione);
-		model.addAttribute("credenzialiListaPrenotati", credenzialiAllieviCertificazioni);
+		model.addAttribute("credenzialiListaPrenotati", credenzialiAllieviCertificazione);
 		model.addAttribute("role", credentialsService.getRoleAuthenticated());
 		
 		return "admin/certificationstudents";

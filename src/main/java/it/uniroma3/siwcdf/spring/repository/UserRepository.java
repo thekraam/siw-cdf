@@ -18,5 +18,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	
 	public Optional<User>  findTopByOrderByIdDesc();
 	
-	public List<List<User>> findByCertificazioniIn(List<Certificazione> certificazioni);
+	//public List<List<User>> findByCertificazioniIn(List<Certificazione> certificazioni);
+	public List<User> findAllByCertificazioniIn(List<Certificazione> certificazioni);
 }

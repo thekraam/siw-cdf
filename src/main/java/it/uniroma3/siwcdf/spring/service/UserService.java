@@ -67,10 +67,10 @@ public class UserService {
 	public List<User> getAllieviCertificazione(Certificazione certificazione){
 		List<Certificazione> certificazioneList = new ArrayList<>();
 		certificazioneList.add(certificazione);
-		List<List<User>> allieviEcertificazioni = userRepository.findByCertificazioniIn(certificazioneList);
+		List<User> allieviEcertificazioni = userRepository.findAllByCertificazioniIn(certificazioneList);
 		
 		if(allieviEcertificazioni.isEmpty()) return null;
-		return allieviEcertificazioni.get(0);
+		return allieviEcertificazioni;
 	}
 
     @Transactional
